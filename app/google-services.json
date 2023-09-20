@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60105875426",
+    "project_id": "certimaker-demo",
+    "storage_bucket": "certimaker-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60105875426:android:452723ceedd65e2a5163bb",
+        "android_client_info": {
+          "package_name": "com.sdsanghani.certimaker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFOIbinDrOTsHBA586XCz5jzx0zXjWzYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
