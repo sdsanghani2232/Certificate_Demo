@@ -1,15 +1,13 @@
-package com.sdsanghani.certimaker;
-//Data Class
-//model part = backend dev..
-public class DemoData {
+package com.sdsanghani.certimaker.firestore;
+//model class
+public class UserMode {
 
-    String name;
-    String email;
+    String name,email;
 
-    public DemoData() {
+    public UserMode() {
     }
 
-    public DemoData(String name, String email) {
+    public UserMode(String name, String email) {
         this.name = name;
         this.email = email;
     }
@@ -30,3 +28,4 @@ public class DemoData {
         this.email = email;
     }
 }
+

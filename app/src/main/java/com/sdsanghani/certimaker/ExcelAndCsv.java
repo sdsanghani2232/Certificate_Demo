@@ -123,7 +123,7 @@ public class ExcelAndCsv extends AppCompatActivity {
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setJavaScriptEnabled(true);
-
+// add xml to click funcation
         excel.setOnClickListener(view -> {
             Intent i = new Intent(Intent.ACTION_GET_CONTENT);
             i.setType("application/vnd.ms-excel");

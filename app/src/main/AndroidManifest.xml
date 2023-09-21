@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CertiMaker"
         tools:targetApi="31">
+
         <activity
             android:name=".Sendemilactibvity"
             android:exported="false" />
@@ -38,7 +39,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ImgToPdf"
+            android:name=".firestore.FireStoreActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
