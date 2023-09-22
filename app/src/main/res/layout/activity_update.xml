@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".firestore.FireStoreActivity"
+    tools:context=".firestore.UpdateActivity"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Name"
-        android:id="@+id/editname"
+        android:id="@+id/editnameupdate"
         android:layout_margin="30dp"
         android:textSize="30dp"
         />
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
-        android:id="@+id/editemail"
+        android:id="@+id/editemailupdate"
         android:layout_margin="30dp"
         android:textSize="30dp"
         />
@@ -29,15 +29,10 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="submit"
-        android:id="@+id/submit_fire_store"
+        android:text="update"
+        android:id="@+id/update_fire_store_data"
         android:textSize="30dp"
-        android:onClick="submit"
+        android:onClick="UpdateUser"
         />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recyclerview_data"/>
 
 </LinearLayout>

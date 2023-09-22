@@ -43,7 +43,6 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database:20.2.2")
     implementation("androidx.annotation:annotation:1.7.0")
-    implementation(files("libs/javax.mail.jar"))
     implementation("com.google.firebase:firebase-auth:22.1.2")
     implementation("com.google.firebase:firebase-firestore:24.8.1")
     testImplementation("junit:junit:4.13.2")

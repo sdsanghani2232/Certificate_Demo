@@ -1,26 +1,32 @@
 package com.sdsanghani.certimaker.firestore;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.sdsanghani.certimaker.R;
 
 import java.util.ArrayList;
 
 public class ReadData extends RecyclerView.Adapter<ReadData.DataHolder> {
     Context context;
-    ArrayList<UserMode> datalist;
+    ArrayList<UserModel> datalist;
 
-    public ReadData(Context context, ArrayList<UserMode> datalist) {
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public ReadData(Context context, ArrayList<UserModel> datalist) {
         this.context = context;
         this.datalist = datalist;
     }
+    UserViewModle userViewModle;
 
     @NonNull
     @Override
@@ -29,10 +35,24 @@ public class ReadData extends RecyclerView.Adapter<ReadData.DataHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DataHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DataHolder holder, @SuppressLint("RecyclerView") int position) {
 
         holder.name.setText(datalist.get(position).getName());
         holder.email.setText(datalist.get(position).getEmail());
+
+        holder.update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context,UpdateActivity.class).putExtra("id",datalist.get(position).getId()).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
+
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               userViewModle.UserDelete(datalist.get(position).getId(),context);
+            }
+        });
     }
 
     @Override
@@ -43,9 +63,12 @@ public class ReadData extends RecyclerView.Adapter<ReadData.DataHolder> {
     class DataHolder extends RecyclerView.ViewHolder {
 
         TextView name,email;
+        Button update,delete;
         public DataHolder(@NonNull View itemView) {
             super(itemView);
 
+            update = itemView.findViewById(R.id.update_fire_store);
+            delete = itemView.findViewById(R.id.delete_fire_store);
             name = itemView.findViewById(R.id.re_name);
             email = itemView.findViewById(R.id.re_email);
         }
