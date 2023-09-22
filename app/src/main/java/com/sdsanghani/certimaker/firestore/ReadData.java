@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.sdsanghani.certimaker.R;
 
 import java.util.ArrayList;
@@ -20,13 +19,14 @@ import java.util.ArrayList;
 public class ReadData extends RecyclerView.Adapter<ReadData.DataHolder> {
     Context context;
     ArrayList<UserModel> datalist;
+    UserViewModle userViewModle;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    public ReadData(Context context, ArrayList<UserModel> datalist) {
+    public ReadData(Context context, ArrayList<UserModel> datalist,UserViewModle userViewModle) {
         this.context = context;
         this.datalist = datalist;
+        this.userViewModle = userViewModle;
+
     }
-    UserViewModle userViewModle;
 
     @NonNull
     @Override

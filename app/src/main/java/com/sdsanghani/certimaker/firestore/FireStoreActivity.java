@@ -38,7 +38,7 @@ public class FireStoreActivity extends AppCompatActivity {
         userViewModle.getUserList().observe(this, new Observer<List<UserModel>>() {
             @Override
             public void onChanged(List<UserModel> userModels) {
-                rv.setAdapter(new ReadData(getApplicationContext(), (ArrayList<UserModel>) userModels));
+                rv.setAdapter(new ReadData(getApplicationContext(), (ArrayList<UserModel>) userModels,userViewModle));
             }
         });
     }
