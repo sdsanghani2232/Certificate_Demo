@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.firestore;
+package com.sdsanghani.certimaker.firestore.models;
 
 import android.content.Context;
 import android.widget.Toast;
@@ -17,6 +17,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.sdsanghani.certimaker.firestore.adapters.DateAndTimeStamp;
+import com.sdsanghani.certimaker.firestore.updatedata.UpdateActivity;
 
 import java.util.List;
 

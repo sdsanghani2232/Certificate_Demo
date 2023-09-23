@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.sdsanghani.certimaker.R;
+import com.sdsanghani.certimaker.firestore.adapters.DateAndTimeStamp;
+import com.sdsanghani.certimaker.firestore.adapters.UserlistAdapter;
+import com.sdsanghani.certimaker.firestore.models.UserModel;
+import com.sdsanghani.certimaker.firestore.models.UserViewModle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +38,10 @@ public class FireStoreActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         userViewModle = new ViewModelProvider(this).get(UserViewModle.class);
-
         userViewModle.getUserList().observe(this, new Observer<List<UserModel>>() {
             @Override
             public void onChanged(List<UserModel> userModels) {
-                rv.setAdapter(new ReadData(getApplicationContext(), (ArrayList<UserModel>) userModels,userViewModle));
+                rv.setAdapter(new UserlistAdapter(getApplicationContext(), (ArrayList<UserModel>) userModels,userViewModle));
             }
         });
     }

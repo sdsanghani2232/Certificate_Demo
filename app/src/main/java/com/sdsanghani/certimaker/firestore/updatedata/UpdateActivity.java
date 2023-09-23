@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.firestore;
+package com.sdsanghani.certimaker.firestore.updatedata;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -9,8 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.sdsanghani.certimaker.R;
+import com.sdsanghani.certimaker.firestore.models.UserModel;
+import com.sdsanghani.certimaker.firestore.models.UserViewModle;
 
 public class UpdateActivity extends AppCompatActivity {
     EditText name,email;

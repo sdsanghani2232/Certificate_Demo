@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.firestore;
+package com.sdsanghani.certimaker.firestore.models;
 //model class
 public class UserModel {
 

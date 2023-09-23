@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.firestore;
+package com.sdsanghani.certimaker.firestore.adapters;
 
 import android.annotation.SuppressLint;
 

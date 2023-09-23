@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.firestore;
+package com.sdsanghani.certimaker.firestore.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,15 +13,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sdsanghani.certimaker.R;
+import com.sdsanghani.certimaker.firestore.updatedata.UpdateActivity;
+import com.sdsanghani.certimaker.firestore.models.UserModel;
+import com.sdsanghani.certimaker.firestore.models.UserViewModle;
 
 import java.util.ArrayList;
 
-public class ReadData extends RecyclerView.Adapter<ReadData.DataHolder> {
+public class UserlistAdapter extends RecyclerView.Adapter<UserlistAdapter.DataHolder> {
     Context context;
     ArrayList<UserModel> datalist;
     UserViewModle userViewModle;
 
-    public ReadData(Context context, ArrayList<UserModel> datalist,UserViewModle userViewModle) {
+    public UserlistAdapter(Context context, ArrayList<UserModel> datalist, UserViewModle userViewModle) {
         this.context = context;
         this.datalist = datalist;
         this.userViewModle = userViewModle;
@@ -43,7 +46,7 @@ public class ReadData extends RecyclerView.Adapter<ReadData.DataHolder> {
         holder.update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context,UpdateActivity.class).putExtra("id",datalist.get(position).getId()).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                context.startActivity(new Intent(context, UpdateActivity.class).putExtra("id",datalist.get(position).getId()).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
 

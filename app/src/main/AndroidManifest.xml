@@ -17,7 +17,10 @@
         android:theme="@style/Theme.CertiMaker"
         tools:targetApi="31">
         <activity
-            android:name=".firestore.UpdateActivity"
+            android:name=".firestore.FireStoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".firestore.updatedata.UpdateActivity"
             android:exported="false" />
         <activity
             android:name=".Sendemilactibvity"
@@ -41,7 +44,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".firestore.FireStoreActivity"
+            android:name=".firestorageclass.UploadImgActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
