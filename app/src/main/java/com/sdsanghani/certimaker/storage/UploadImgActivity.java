@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.firestorageclass;
+package com.sdsanghani.certimaker.storage;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,6 @@ import android.widget.Button;
 
 import com.sdsanghani.certimaker.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UploadImgActivity extends AppCompatActivity {

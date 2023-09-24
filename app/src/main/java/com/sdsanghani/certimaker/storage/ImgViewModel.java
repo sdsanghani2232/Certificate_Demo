@@ -1,9 +1,7 @@
-package com.sdsanghani.certimaker.firestorageclass;
+package com.sdsanghani.certimaker.storage;
 
 import android.content.Context;
 import android.net.Uri;
-import android.os.Environment;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -12,14 +10,12 @@ import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sdsanghani.certimaker.firestore.adapters.DateAndTimeStamp;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 

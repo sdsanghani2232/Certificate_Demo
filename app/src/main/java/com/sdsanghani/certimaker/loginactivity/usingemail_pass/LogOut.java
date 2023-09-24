@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker;
+package com.sdsanghani.certimaker.loginactivity.usingemail_pass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sdsanghani.certimaker.R;
 
 public class LogOut extends AppCompatActivity {
 
@@ -28,7 +28,7 @@ public class LogOut extends AppCompatActivity {
         user = auth.getCurrentUser();
         if(user == null)
         {
-            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             finish();
         }
         else

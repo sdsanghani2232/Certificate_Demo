@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker;
+package com.sdsanghani.certimaker.loginactivity.usingemail_pass;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sdsanghani.certimaker.R;
 
 public class Rigerster extends AppCompatActivity {
 
@@ -68,7 +69,7 @@ public class Rigerster extends AppCompatActivity {
 
                                     Toast.makeText(Rigerster.this, "Login",
                                             Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                     finish();
 //                                    FirebaseUser user = mAuth.getCurrentUser();
 

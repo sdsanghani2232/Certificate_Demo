@@ -1,6 +1,4 @@
-package com.sdsanghani.certimaker.firestorageclass;
-
-import android.net.Uri;
+package com.sdsanghani.certimaker.storage;
 
 public class UploadImg {
 

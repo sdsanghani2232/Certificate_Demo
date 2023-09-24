@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "60105875426",
+    "firebase_url": "https://certimaker-demo-default-rtdb.firebaseio.com",
     "project_id": "certimaker-demo",
     "storage_bucket": "certimaker-demo.appspot.com"
   },
@@ -12,7 +13,28 @@
           "package_name": "com.sdsanghani.certimaker"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "60105875426-496ideg1o3uvs2bjcgm6pfn80cqvddm7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sdsanghani.certimaker",
+            "certificate_hash": "555659d42d2e0a7c86d686910886e1f594510a31"
+          }
+        },
+        {
+          "client_id": "60105875426-622j6do55296dcrddnobuidk4cnh97p6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sdsanghani.certimaker",
+            "certificate_hash": "e8143a0a51934257d434b5a48daf4495e146411b"
+          }
+        },
+        {
+          "client_id": "60105875426-9eno0rm717drh34b4hvvr85dir3aram0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDFOIbinDrOTsHBA586XCz5jzx0zXjWzYA"
@@ -20,7 +42,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60105875426-9eno0rm717drh34b4hvvr85dir3aram0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.firestorageclass;
+package com.sdsanghani.certimaker.storage;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

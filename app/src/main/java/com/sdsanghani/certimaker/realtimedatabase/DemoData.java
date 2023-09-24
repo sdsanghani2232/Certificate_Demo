@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker;
+package com.sdsanghani.certimaker.realtimedatabase;
 //Data Class
 //model part = backend dev..
 public class DemoData {

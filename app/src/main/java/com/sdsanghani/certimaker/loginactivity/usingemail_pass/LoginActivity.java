@@ -1,6 +1,4 @@
-package com.sdsanghani.certimaker;
-
-import static android.content.ContentValues.TAG;
+package com.sdsanghani.certimaker.loginactivity.usingemail_pass;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sdsanghani.certimaker.MainActivity;
+import com.sdsanghani.certimaker.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,12 +33,12 @@ public class LoginActivity extends AppCompatActivity {
         if(currentUser != null){
             if(currentUser.getEmail().equals("daksh@gmail.com"))
             {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
             else
             {
-                startActivity(new Intent(getApplicationContext(),LogOut.class));
+                startActivity(new Intent(getApplicationContext(), LogOut.class));
                 finish();
             }
         }

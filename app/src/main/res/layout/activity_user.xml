@@ -4,25 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loginactivity.usingemail_pass.LoginActivity"
+    tools:context=".loginactivity.panel.UserActivity"
     android:orientation="vertical"
     android:gravity="center">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/emailid"
-        android:textSize="30sp"/>
-
+        android:text="user"
+        android:textSize="50dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email"
+        android:textSize="30dp"
+        android:id="@+id/email_user"
+        />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:text="Log out"
-        android:id="@+id/logout"/>
-
-
+        android:text="Sign out"
+        android:onClick="signout"
+        android:id="@+id/sign_out_user"
+        />
 
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker;
+package com.sdsanghani.certimaker.realtimedatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sdsanghani.certimaker.R;
 
 public class DatabaseActivity extends AppCompatActivity {
 

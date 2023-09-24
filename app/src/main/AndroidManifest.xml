@@ -17,34 +17,43 @@
         android:theme="@style/Theme.CertiMaker"
         tools:targetApi="31">
         <activity
+            android:name=".loginactivity.panel.UserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".loginactivity.panel.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".loginactivity.usinggoogle.LoginPageGoogle"
+            android:exported="false" />
+        <activity
+            android:name=".storage.UploadImgActivity"
+            android:exported="false" />
+        <activity
             android:name=".firestore.FireStoreActivity"
             android:exported="false" />
         <activity
             android:name=".firestore.updatedata.UpdateActivity"
             android:exported="false" />
         <activity
-            android:name=".Sendemilactibvity"
-            android:exported="false" />
-        <activity
             android:name=".ExcelAndCsv"
             android:exported="false" />
         <activity
-            android:name=".LogOut"
+            android:name=".loginactivity.usingemail_pass.LogOut"
             android:exported="false" />
         <activity
-            android:name=".Rigerster"
+            android:name=".loginactivity.usingemail_pass.Rigerster"
             android:exported="false" />
         <activity
-            android:name=".DatabaseActivity"
+            android:name=".realtimedatabase.DatabaseActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".loginactivity.usingemail_pass.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".firestorageclass.UploadImgActivity"
+            android:name=".loginactivity.panel.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
