@@ -22,7 +22,8 @@ import java.util.List;
 public class ImgViewModel extends ViewModel {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseStorage storage = FirebaseStorage.getInstance("gs://certimaker-demo.appspot.com"); // if many bucket then pass that url, and no any url pass that consider default bucket
+    FirebaseStorage storage = FirebaseStorage.getInstance("gs://certimaker-demo.appspot.com"); // i// f many bucket then pass that url, and no any url pass that consider default bucket
+
     StorageReference reference = storage.getReference();
 
     private MutableLiveData<List<String>> imglist;
@@ -36,7 +37,7 @@ public class ImgViewModel extends ViewModel {
         }
         return imglist;
     }
-
+// that code be error so change that code reference tha htmlDataViewModel
     private void lodeImg() {
        reference.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
            @Override

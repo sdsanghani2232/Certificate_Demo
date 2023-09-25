@@ -48,6 +48,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.8.1")
     implementation("com.google.firebase:firebase-storage:20.2.1")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

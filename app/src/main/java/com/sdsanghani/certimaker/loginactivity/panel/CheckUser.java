@@ -3,11 +3,9 @@ package com.sdsanghani.certimaker.loginactivity.panel;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -59,7 +57,7 @@ public class CheckUser {
                             }
                             else
                             {
-                                Toast.makeText(context, "Login ", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -67,7 +65,7 @@ public class CheckUser {
             e.printStackTrace();
         }
     }
-
+// check Admin
     public void checkAdmin(String email) {
 
         DocumentReference reference = db.collection("admin").document(email);
@@ -88,6 +86,7 @@ public class CheckUser {
         });
     }
 
+    // check user
     private void checkUser(String email) {
 
         DocumentReference reference = db.collection("user").document(email);
@@ -105,7 +104,7 @@ public class CheckUser {
             }
         });
     }
-
+// add new user
     private void addUser(String email) {
 
         user = FirebaseAuth.getInstance().getCurrentUser();

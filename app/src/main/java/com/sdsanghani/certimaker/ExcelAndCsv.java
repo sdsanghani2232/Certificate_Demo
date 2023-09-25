@@ -129,7 +129,6 @@ public class ExcelAndCsv extends AppCompatActivity {
             String[] mintypes = {"application/vnd.ms-excel","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"};
             i.putExtra(Intent.EXTRA_MIME_TYPES,mintypes);
            startActivityForResult(i,CONFORM_CODE_EXCEL);
-
         });
 
         csv.setOnClickListener(view -> {
@@ -137,7 +136,6 @@ public class ExcelAndCsv extends AppCompatActivity {
             i.addCategory(Intent.CATEGORY_OPENABLE);
             i.setType("text/*");
            startActivityForResult(i,CONFORM_CODE_CSV);
-
         });
     }
 
@@ -150,10 +148,8 @@ public class ExcelAndCsv extends AppCompatActivity {
         String type;
         if (requestCode == CONFORM_CODE_EXCEL && resultCode == RESULT_OK && data != null)
         {
-//            tv.setText("");
-//            Toast.makeText(this, "excel", Toast.LENGTH_SHORT).show();
+
             uri = data.getData();
-            Log.d("uri", String.valueOf(uri));
             resolver = getContentResolver();
             type = resolver.getType(uri);
             if (type != null && (type.equals("application/vnd.ms-excel") || type.equals("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")))

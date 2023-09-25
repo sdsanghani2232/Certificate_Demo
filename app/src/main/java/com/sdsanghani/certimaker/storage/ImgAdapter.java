@@ -23,7 +23,6 @@ public class ImgAdapter extends RecyclerView.Adapter<ImgAdapter.ImgHolder> {
     Context context;
     List<String> datalist;
     ImgViewModel model;
-    UploadImg uploadImg;
     public ImgAdapter(Context context, List<String> datalist, ImgViewModel model) {
         this.context = context;
         this.datalist = datalist;
