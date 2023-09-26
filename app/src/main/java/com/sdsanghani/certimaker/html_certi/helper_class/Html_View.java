@@ -1,9 +1,7 @@
-package com.sdsanghani.certimaker.html_certi.htmladapter;
+package com.sdsanghani.certimaker.html_certi.helper_class;
 
-import android.graphics.ImageDecoder;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -11,13 +9,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-public class HtmlOutput extends AsyncTask<String,Void,String> {
+public class Html_View extends AsyncTask<String,Void,String> {
     private OnHtmlFetchedListener listener;
 
-    public HtmlOutput(OnHtmlFetchedListener listener)
+    public Html_View(OnHtmlFetchedListener listener)
     {
         this.listener =listener;
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".html_certi.mainactivitysclass.GenratesCerti">
+    tools:context=".html_certi.activity_class.Generate_Certificate">
 
     <WebView
         android:layout_width="wrap_content"
@@ -13,18 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/html_file"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         />
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_margin="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rv_created"
-        app:layout_constraintTop_toBottomOf="@+id/html_file"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintBottom_toTopOf="@+id/excel_file"/>
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

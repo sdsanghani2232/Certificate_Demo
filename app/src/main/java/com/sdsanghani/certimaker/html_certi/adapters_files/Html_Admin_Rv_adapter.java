@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.html_certi.htmladapter;
+package com.sdsanghani.certimaker.html_certi.adapters_files;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,25 +10,25 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sdsanghani.certimaker.R;
-import com.sdsanghani.certimaker.html_certi.datamodels.HtmlDataModel;
-import com.sdsanghani.certimaker.html_certi.mainactivitysclass.GenratesCerti;
+import com.sdsanghani.certimaker.html_certi.data_models.HtmlFiles;
+import com.sdsanghani.certimaker.html_certi.activity_class.Generate_Certificate;
+import com.sdsanghani.certimaker.html_certi.helper_class.Html_View;
 
 import java.util.List;
 
-public class RvAdapter extends RecyclerView.Adapter<RvAdapter.CodeFile> {
+public class Html_Admin_Rv_adapter extends RecyclerView.Adapter<Html_Admin_Rv_adapter.CodeFile> {
 
     Context context;
-    List<HtmlDataModel> htmlDataModels ;
+    List<HtmlFiles> htmlFiles;
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setFilesList(List<HtmlDataModel> filesList) {
-        this.htmlDataModels = filesList;
+    public void setFilesList(List<HtmlFiles> filesList) {
+        this.htmlFiles = filesList;
         notifyDataSetChanged();
     }
 
@@ -36,7 +36,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.CodeFile> {
     @Override
     public CodeFile onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        return new RvAdapter.CodeFile(LayoutInflater.from(parent.getContext()).inflate(R.layout.html_file_layout,parent,false));
+        return new Html_Admin_Rv_adapter.CodeFile(LayoutInflater.from(parent.getContext()).inflate(R.layout.html_file_layout,parent,false));
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -46,8 +46,8 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.CodeFile> {
         holder.webSettings.setLoadWithOverviewMode(true);
         holder.webSettings.setJavaScriptEnabled(true);
         holder.webSettings.setUseWideViewPort(true);
-        holder.url = htmlDataModels.get(position).getFileDownloadUrl();
-        new HtmlOutput(new HtmlOutput.OnHtmlFetchedListener() {
+        holder.url = htmlFiles.get(position).getFileDownloadUrl();
+        new Html_View(new Html_View.OnHtmlFetchedListener() {
             @Override
             public void OnHtmlFetched(String code) {
                 if(code != null)
@@ -61,7 +61,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.CodeFile> {
         holder.use.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, GenratesCerti.class)
+                context.startActivity(new Intent(context, Generate_Certificate.class)
                         .putExtra("code",holder.code)
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
@@ -71,7 +71,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.CodeFile> {
 
     @Override
     public int getItemCount() {
-        return htmlDataModels != null ? htmlDataModels.size() : 0;
+        return htmlFiles != null ? htmlFiles.size() : 0;
     }
 
     class CodeFile extends RecyclerView.ViewHolder {

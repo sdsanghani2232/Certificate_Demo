@@ -1,13 +1,13 @@
-package com.sdsanghani.certimaker.html_certi.datamodels;
+package com.sdsanghani.certimaker.html_certi.data_models;
 
-public class HtmlDataModel {
+public class HtmlFiles {
 
     String fileName;
     String fileDownloadUrl;
 
-    public HtmlDataModel() {
+    public HtmlFiles() {
     }
-    public HtmlDataModel(String fileName, String fileDownloadUrl) {
+    public HtmlFiles(String fileName, String fileDownloadUrl) {
         this.fileName = fileName;
         this.fileDownloadUrl = fileDownloadUrl;
     }

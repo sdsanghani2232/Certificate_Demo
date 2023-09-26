@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.html_certi.mainactivitysclass;
+package com.sdsanghani.certimaker.html_certi.activity_class;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +14,13 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sdsanghani.certimaker.R;
-import com.sdsanghani.certimaker.html_certi.datamodels.HtmlDataModel;
-import com.sdsanghani.certimaker.html_certi.databasefiles.HtmlDataViewModel;
-import com.sdsanghani.certimaker.html_certi.htmladapter.RvAdapter;
+import com.sdsanghani.certimaker.html_certi.data_models.HtmlFiles;
+import com.sdsanghani.certimaker.html_certi.data_base_files.HtmlDataViewModel;
+import com.sdsanghani.certimaker.html_certi.adapters_files.Html_Admin_Rv_adapter;
 
 import java.util.List;
 
-public class DemoCerti extends AppCompatActivity {
+public class Admin_Certificate_page extends AppCompatActivity {
 
     FloatingActionButton info,addCode;
     RecyclerView rv;
@@ -30,7 +30,7 @@ public class DemoCerti extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_demo_certi);
+        setContentView(R.layout.admin_certificate_page);
 
         info =findViewById(R.id.info_page);
         addCode = findViewById(R.id.add_files);
@@ -38,12 +38,12 @@ public class DemoCerti extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this));
         model = new ViewModelProvider(this).get(HtmlDataViewModel.class);
 
-        RvAdapter adapter = new RvAdapter();
+        Html_Admin_Rv_adapter adapter = new Html_Admin_Rv_adapter();
         rv.setAdapter(adapter);
-        model.getCodeFile().observe(this, new Observer<List<HtmlDataModel>>() {
+        model.getCodeFile().observe(this, new Observer<List<HtmlFiles>>() {
             @Override
-            public void onChanged(List<HtmlDataModel> htmlDataModels) {
-                adapter.setFilesList(htmlDataModels);
+            public void onChanged(List<HtmlFiles> htmlFiles) {
+                adapter.setFilesList(htmlFiles);
             }
         });
 

@@ -1,7 +1,9 @@
-package com.sdsanghani.certimaker.html_certi.databasefiles;
+package com.sdsanghani.certimaker.html_certi.data_base_files;
 
+import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -12,7 +14,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
 public class Excel_Pdf_Uploade {
@@ -21,7 +22,7 @@ public class Excel_Pdf_Uploade {
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference reference;
 
-    public void uploadPdf(byte[] pdfBytes, String pdfname, String eventName, String userEmil, final OnPdfUploadListener listener)
+    public void uploadPdf(byte[] pdfBytes, String pdfname, String eventName, String userEmil,String userName,final OnPdfUploadListener listener)
     {
         reference = storage.getReference().child("events /"+eventName + "/"+pdfname);
         reference.putBytes(pdfBytes).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -34,6 +35,7 @@ public class Excel_Pdf_Uploade {
                                set(new HashMap<String,Object>(){
                                    {
                                        put("Pdf File",uri.toString());
+                                       put("Pdf Name",userName);
                                    }
                                })
                                .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -52,7 +54,7 @@ public class Excel_Pdf_Uploade {
                 });
     }
 
-    public void uploadExcel(byte[] excel, String newExcel, String eventName)
+    public void uploadExcel(byte[] excel, String newExcel, String eventName, Context context)
     {
         reference = storage.getReference().child("events /"+eventName + "/"+newExcel);
         reference.putBytes(excel).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -70,7 +72,6 @@ public class Excel_Pdf_Uploade {
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
-                                        Log.d("code file","add complte");
                                     }
                                 });
                     }

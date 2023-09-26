@@ -1,4 +1,4 @@
-package com.sdsanghani.certimaker.html_certi.datamodels;
+package com.sdsanghani.certimaker.html_certi.data_models;
 
 public class UserDetails {
 

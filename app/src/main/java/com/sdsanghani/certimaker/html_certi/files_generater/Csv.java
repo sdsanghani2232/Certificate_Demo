@@ -1,41 +1,37 @@
-package com.sdsanghani.certimaker.html_certi.filesgenerater;
+package com.sdsanghani.certimaker.html_certi.files_generater;
 
 import android.content.Context;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
-import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
-import com.sdsanghani.certimaker.firestore.adapters.DateAndTimeStamp;
-import com.sdsanghani.certimaker.html_certi.databasefiles.Excel_Pdf_Uploade;
-import com.sdsanghani.certimaker.html_certi.datamodels.FilesDetails;
-import com.sdsanghani.certimaker.html_certi.datamodels.UserDetails;
 
-import org.apache.poi.ss.usermodel.Cell;
+import com.sdsanghani.certimaker.html_certi.data_base_files.Excel_Pdf_Uploade;
+import com.sdsanghani.certimaker.html_certi.data_models.FilesDetails;
+import com.sdsanghani.certimaker.html_certi.data_models.UserDetails;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Excel {
+public class Csv {
     Context context;
     WebView webView;
     View view;
     Workbook workbook;
+    List<String> rowdataOfCav;
     int currentIndex = 0,row = 1,height,width;
-    List<List<String>> dataOfExcel;
+    List<List<String>> dataOfCsv;
     Sheet sheet;
     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     Uri uri;
@@ -43,69 +39,68 @@ public class Excel {
     FilesDetails filesDetails;
     UserDetails userDetails = new UserDetails();
 
-    public Excel(Context context, FilesDetails details) {
+    public Csv(Context context, FilesDetails filesDetails) {
         this.context = context;
-        filesDetails = details;
+        this.filesDetails = filesDetails;
     }
 
-    public void excelToPdf(Uri uri, WebView webView, View view) {
+    public void csvToPdf(Uri uri, WebView webView, View view) {
         this.view = view;
         this.webView = webView;
         this.uri = uri;
         oldCode = filesDetails.getCode();
 
-
         try {
+            InputStream stream = context.getContentResolver().openInputStream(uri);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+            dataOfCsv = new ArrayList<>();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split("\\,");
+                rowdataOfCav = new ArrayList<>();
 
-            InputStream inputStream = context.getContentResolver().openInputStream(uri);
-            workbook = new XSSFWorkbook(inputStream);
-            sheet = workbook.getSheetAt(0);
-            dataOfExcel = new ArrayList<>();
-            for (Row row : sheet)
-            {
-                boolean isRowEmpty = true;
-                List<String> rowData = new ArrayList<>();
-                for (Cell cell : row)
-                {
-                    String celldata = cell.getStringCellValue();
-                    if(!celldata.isEmpty())
-                    {
-                        rowData.add(celldata);
-                        isRowEmpty = false;
-                    }
-                }
-                if(!isRowEmpty) dataOfExcel.add(rowData);
+                for (String part : parts)
+                    rowdataOfCav.add(part.trim());
+
+                dataOfCsv.add(rowdataOfCav);
             }
-            workbook.close();
             CreateNewExcel();
             timeDelay();
         } catch (IOException e) {
-          e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
+    private void CreateNewExcel() {
+        workbook = new XSSFWorkbook();
+        sheet = workbook.createSheet("sheet1");
+
+        Row headerRow = sheet.createRow(0);
+        headerRow.createCell(0).setCellValue("Name");
+        headerRow.createCell(1).setCellValue("email");
+        headerRow.createCell(2).setCellValue("certificate Ids");
+    }
+
     private void timeDelay() {
-//        Log.d("code files","3");
-        if(currentIndex < dataOfExcel.size())
+        if(currentIndex<dataOfCsv.size())
         {
-            List<String> row = dataOfExcel.get(currentIndex);
+            List<String> row = dataOfCsv.get(currentIndex);
             userName= row.get(0);
             userEmil = row.get(1);
             userDetails.setName(userName);
             userDetails.setEmail(userEmil);
             changeCode = oldCode.replace("Joe Nathan",userName);
             setWebView();
-
         }else
         {
-
             currentIndex = 0;
             try {
                 workbook.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            new Excel_Pdf_Uploade().uploadExcel(outputStream.toByteArray(), newExcel, "git hub");
+            new Excel_Pdf_Uploade().uploadExcel(outputStream.toByteArray(), newExcel, "git hub", context);
+
         }
     }
 
@@ -131,14 +126,14 @@ public class Excel {
         view.draw(page.getCanvas());
         pd.finishPage(page);
 
-        certificateName = userName +" : " +System.currentTimeMillis()+".pdf";
+        certificateName = userName + " : " + System.currentTimeMillis() + ".pdf";
         filesDetails.setNewCerti(certificateName);
 
         try {
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             pd.writeTo(outputStream);
-            new Excel_Pdf_Uploade().uploadPdf(outputStream.toByteArray(), certificateName, filesDetails.getEventName(),userEmil, new Excel_Pdf_Uploade.OnPdfUploadListener() {
+            new Excel_Pdf_Uploade().uploadPdf(outputStream.toByteArray(), certificateName, "git hub", userEmil,userName,new Excel_Pdf_Uploade.OnPdfUploadListener() {
                 @Override
                 public void onUploadSuccess() {
                     addInExcel();
@@ -147,8 +142,8 @@ public class Excel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+    }
     private void addInExcel() {
 
 
@@ -161,7 +156,7 @@ public class Excel {
 
     private void completeExcel() {
 
-        newExcel = filesDetails.getEventName()+".xlsx";
+        newExcel = filesDetails.getEventName() + ".xlsx";
         filesDetails.setNewExcel(newExcel);
 
         try {
@@ -171,8 +166,6 @@ public class Excel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -182,13 +175,4 @@ public class Excel {
         },400);
     }
 
-    private void CreateNewExcel() {
-        workbook = new XSSFWorkbook();
-        sheet = workbook.createSheet("sheet1");
-
-        Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("Name");
-        headerRow.createCell(1).setCellValue("email");
-        headerRow.createCell(2).setCellValue("certificate Ids");
-    }
 }

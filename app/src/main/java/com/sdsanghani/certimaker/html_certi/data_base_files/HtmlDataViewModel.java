@@ -1,7 +1,8 @@
-package com.sdsanghani.certimaker.html_certi.databasefiles;
+package com.sdsanghani.certimaker.html_certi.data_base_files;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -17,7 +18,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.sdsanghani.certimaker.html_certi.datamodels.HtmlDataModel;
+import com.sdsanghani.certimaker.html_certi.data_models.HtmlFiles;
 
 import java.util.List;
 
@@ -28,9 +29,9 @@ public class HtmlDataViewModel extends ViewModel {
     StorageReference reference = storage.getReference();
 
     // get html and txt files
-    private MutableLiveData<List<HtmlDataModel>> CodeFileList;
+    private MutableLiveData<List<HtmlFiles>> CodeFileList;
 
-    public LiveData<List<HtmlDataModel>> getCodeFile()
+    public LiveData<List<HtmlFiles>> getCodeFile()
     {
         if(CodeFileList == null)
         {
@@ -47,7 +48,7 @@ public class HtmlDataViewModel extends ViewModel {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error == null)
                 {
-                    List<HtmlDataModel> code = value.toObjects(HtmlDataModel.class);
+                    List<HtmlFiles> code = value.toObjects(HtmlFiles.class);
                     CodeFileList.postValue(code);
 
                 }
@@ -67,7 +68,7 @@ public class HtmlDataViewModel extends ViewModel {
                 reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        HtmlDataModel dataModel = new HtmlDataModel(name,uri.toString());
+                        HtmlFiles dataModel = new HtmlFiles(name,uri.toString());
                         db.collection("Codes").document(name)
                                 .set(dataModel)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
