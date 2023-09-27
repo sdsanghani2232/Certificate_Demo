@@ -24,9 +24,9 @@ public class Admin_Certificate_page extends AppCompatActivity {
 
     FloatingActionButton info,addCode;
     RecyclerView rv;
+    HtmlDataViewModel model;
 
     private final static int HTML_REQUEST_CODE = 100;
-    HtmlDataViewModel model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

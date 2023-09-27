@@ -92,14 +92,13 @@ public class Excel {
 
         }else
         {
-
             currentIndex = 0;
             try {
                 workbook.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            new Excel_Pdf_Uploade().uploadExcel(outputStream.toByteArray(), newExcel, "gut hub",context);
+            new Excel_Pdf_Uploade().uploadExcel(outputStream.toByteArray(), newExcel, "git hub",context);
         }
     }
 
@@ -132,7 +131,7 @@ public class Excel {
 
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             pd.writeTo(outputStream);
-            new Excel_Pdf_Uploade().uploadPdf(outputStream.toByteArray(), certificateName, "git hub",userEmil,userName,new Excel_Pdf_Uploade.OnPdfUploadListener() {
+            new Excel_Pdf_Uploade().uploadPdf(outputStream.toByteArray(), certificateName, "git",userEmil,userName,new Excel_Pdf_Uploade.OnPdfUploadListener() {
                 @Override
                 public void onUploadSuccess() {
                     addInExcel();

@@ -16,7 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CertiMaker"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu"
+        android:enableOnBackInvokedCallback="true">
+
+        <activity
+            android:name=".html_certi.activity_class.Admin_Certificate_page"
+            android:exported="false" />
         <activity
             android:name=".html_certi.activity_class.Generate_Certificate"
             android:exported="false" />
@@ -60,7 +65,7 @@
             android:name=".loginactivity.usingemail_pass.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".html_certi.activity_class.Admin_Certificate_page"
+            android:name=".html_certi.activity_class.ScrachCretificate"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,6 +73,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
