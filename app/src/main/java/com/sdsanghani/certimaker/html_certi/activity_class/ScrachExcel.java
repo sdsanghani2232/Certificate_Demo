@@ -15,30 +15,32 @@ import android.widget.Toast;
 
 import com.sdsanghani.certimaker.R;
 import com.sdsanghani.certimaker.html_certi.adapters_files.Admin_Search_Pdf_Rv_adapter;
-import com.sdsanghani.certimaker.html_certi.data_base_files.Search_Pdf_files;
-import com.sdsanghani.certimaker.html_certi.data_models.PdfDetails;
+import com.sdsanghani.certimaker.html_certi.adapters_files.Admin_Search_excel_Rv_Adapter;
+import com.sdsanghani.certimaker.html_certi.data_base_files.Search_excel_files;
+import com.sdsanghani.certimaker.html_certi.data_models.ExcexlFiles;
 
 import java.util.List;
 
-public class ScrachCretificate extends AppCompatActivity {
-
+public class ScrachExcel extends AppCompatActivity {
     EditText event;
     Button search;
     RecyclerView rv;
-    Search_Pdf_files model;
-    Admin_Search_Pdf_Rv_adapter adapter;
+    Search_excel_files model;
+    Admin_Search_excel_Rv_Adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scrach_cretificate);
-        search =findViewById(R.id.search_btn);
-        event = findViewById(R.id.search_file);
-        adapter = new Admin_Search_Pdf_Rv_adapter();
-        rv = findViewById(R.id.search_rv);
+        setContentView(R.layout.activity_scrach_excel);
+
+        search =findViewById(R.id.search_btn_excel);
+        event = findViewById(R.id.search_Excel);
+        adapter = new Admin_Search_excel_Rv_Adapter();
+        rv = findViewById(R.id.search_excel_rv);
 
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
-        model = new ViewModelProvider(this).get(Search_Pdf_files.class);
+        model = new ViewModelProvider(this).get(Search_excel_files.class);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,11 +61,10 @@ public class ScrachCretificate extends AppCompatActivity {
         {
             model.getEventname(eventName.trim());
             model.getPdfFiles();
-            model.getPdfFiles().observe(this, new Observer<List<PdfDetails>>() {
+            model.getPdfFiles().observe(this, new Observer<List<ExcexlFiles>>() {
                 @Override
-                public void onChanged(List<PdfDetails> pdfDetails) {
-                    Log.d("pdf list",pdfDetails.toString());
-                    adapter.setPdflist(pdfDetails,eventName.trim(),getApplicationContext());
+                public void onChanged(List<ExcexlFiles> excexlFiles) {
+                    adapter.setExcellist(excexlFiles,eventName.trim(),getApplicationContext());
                 }
             });
         }

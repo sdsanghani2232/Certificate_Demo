@@ -2,10 +2,7 @@ package com.sdsanghani.certimaker.html_certi.adapters_files;
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,29 +11,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ShareCompat;
-import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.sdsanghani.certimaker.R;
 import com.sdsanghani.certimaker.html_certi.data_models.PdfDetails;
 import com.sdsanghani.certimaker.html_certi.helper_class.SendFiles;
 
 import java.util.List;
 
-public class Admin_Search_Rv_adapter extends RecyclerView.Adapter<Admin_Search_Rv_adapter.SearchHelper> {
+public class Admin_Search_Pdf_Rv_adapter extends RecyclerView.Adapter<Admin_Search_Pdf_Rv_adapter.SearchHelper> {
 
     Context context;
     List<PdfDetails> pdfDetails;
     String evName;
-    FirebaseStorage storage =FirebaseStorage.getInstance();
-    StorageReference reference ;
+
     @NonNull
     @Override
     public SearchHelper onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new Admin_Search_Rv_adapter.SearchHelper(LayoutInflater.from(parent.getContext()).inflate(R.layout.pdf_view_layout,parent,false));
+        return new Admin_Search_Pdf_Rv_adapter.SearchHelper(LayoutInflater.from(parent.getContext()).inflate(R.layout.pdf_view_layout,parent,false));
     }
 
     @Override

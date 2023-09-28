@@ -8,10 +8,6 @@ public class FilesDetails {
         return eventName;
     }
 
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
-
     public FilesDetails() {
     }
 
@@ -23,16 +19,8 @@ public class FilesDetails {
         this.code = code;
     }
 
-    public String getNewExcel() {
-        return NewExcel;
-    }
-
     public void setNewExcel(String newExcel) {
         NewExcel = newExcel;
-    }
-
-    public String getNewCerti() {
-        return NewCerti;
     }
 
     public void setNewCerti(String newCerti) {

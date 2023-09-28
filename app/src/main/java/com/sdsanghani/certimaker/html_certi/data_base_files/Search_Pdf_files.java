@@ -11,9 +11,8 @@ import com.sdsanghani.certimaker.html_certi.data_models.PdfDetails;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class Search_Files extends ViewModel {
+public class Search_Pdf_files extends ViewModel {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private MutableLiveData<String> eventName = new MutableLiveData<>();

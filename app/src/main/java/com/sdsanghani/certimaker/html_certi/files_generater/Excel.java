@@ -99,6 +99,7 @@ public class Excel {
                 e.printStackTrace();
             }
             new Excel_Pdf_Uploade().uploadExcel(outputStream.toByteArray(), newExcel, "git hub",context);
+            webView.loadData(oldCode,"text/html","UTF-8");
         }
     }
 

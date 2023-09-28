@@ -75,8 +75,6 @@ public class Generate_Certificate extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setUseWideViewPort(true);
         webView.loadDataWithBaseURL(null,details.getCode(),"text/html", "UTF-8",null);
-
-
     }
 
 
